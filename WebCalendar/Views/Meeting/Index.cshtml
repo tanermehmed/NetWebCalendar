@@ -1,0 +1,108 @@
+﻿@using WebCalendar.Models
+@model IEnumerable<WebCalendar.Models.MeetingViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Show All Meetings", "AllMeetings")
+</p>
+@{
+    var grid = new WebGrid(source: Model,
+        defaultSort: "Time",
+        rowsPerPage: 15,
+        canSort: true,
+        canPage: true);
+
+}
+@functions{
+    public string GetContacts(int meetingID)
+    {
+        System.Text.StringBuilder list = new System.Text.StringBuilder();
+        foreach (var item in Model.Where(m => m.MeetingID == meetingID))
+        {
+            foreach (var contactModel in item.ContactModels)
+            {
+                list.Append(contactModel.FirstName + " " + contactModel.LastName + ",");
+            }
+
+
+        }
+        if (list.Length > 0)
+        {
+            list.Remove(list.Length - 1, 1);
+        }
+        return list.ToString();
+    }
+}
+
+@using (Html.BeginForm())
+{
+        <div class="editor-label">
+            @Html.Label("Time")
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("Time")
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Description")
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("Description")
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Place")
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("Place")
+        </div>
+
+        <div class="editor-label">
+            @Html.Label("Category")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("categoryName", String.Empty)
+        </div>
+            <div class="editor-label">
+            Contact First Name:
+        </div>
+        <div class="editor-field">
+           <input type="text" id="firstName" name="firstName" />
+        </div>
+        <div class="editor-label">
+            Contact Last Name:
+        </div>
+        <div class="editor-field">
+           <input type="text" id="lastName" name="lastName" />
+        </div>
+        <p>
+            <input type="submit" value="Search" />
+        </p>
+}
+<div id="grid">
+  @grid.GetHtml(
+      tableStyle: "grid",
+      headerStyle: "head",
+      alternatingRowStyle: "alt",
+      columns: grid.Columns(
+          grid.Column("Time"),
+          grid.Column("Description"),
+          grid.Column("Place"),
+          grid.Column("Category", format: (item) => item.Category.Name),
+          grid.Column(header: "Contacts", format: (item) => GetContacts(item.MeetingID)),
+          grid.Column(header: "Action", format: (item) =>
+              new HtmlString(
+                     Html.ActionLink("Edit", "Edit", new { id = item.MeetingID }).ToString() +
+                           Html.ActionLink("Details", "Details", new { id = item.MeetingID }).ToString() +
+                           Html.ActionLink("Delete", "Delete", new { id = item.MeetingID }).ToString()
+              )
+            )
+        )
+ )
+ </div>

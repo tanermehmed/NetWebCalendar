@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebCalendar.Models.ContactViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@{
+    var grid = new WebGrid(source: Model,
+        defaultSort: "FirstName",
+        rowsPerPage: 15,
+        canSort: true,
+        canPage: true);
+}
+
+<div id="grid">
+  @grid.GetHtml(
+      tableStyle: "grid",
+      headerStyle: "head",
+      alternatingRowStyle: "alt",
+      columns: grid.Columns(
+          grid.Column("FirstName"),
+          grid.Column("LastName"),
+          grid.Column("Email"),
+          grid.Column("Phone"),
+          grid.Column(header: "Action", format: (item) =>
+              new HtmlString(
+                     Html.ActionLink("Edit", "Edit", new { id = item.ContactID }).ToString() +
+                     Html.ActionLink("Details", "Details", new { id = item.ContactID }).ToString() +
+                     Html.ActionLink("Delete", "Delete", new { id = item.ContactID }).ToString()
+              )
+     )
+  )
+ )
+ </div>

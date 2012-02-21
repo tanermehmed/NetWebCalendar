@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/StartPage.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div id="colorBar"></div>
+			<section id="outer">
+				<section id="navbar">
+					<div id="ads">
+						<h3>First Free Online Web Calendar</h3>
+						<p>Share with your friends. Web Calendar helps you save contacts and meetings easily.</p>
+						<img src="meeting_logo.png"/>
+					</div>
+					<div id="signup">
+						@Html.Action("Register", "Account")
+					</div>
+				</section>
+			</section>
+
+</body>
+</html>

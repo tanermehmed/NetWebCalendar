@@ -1,0 +1,81 @@
+﻿@using WebCalendar.Models
+@model WebCalendar.Models.MeetingViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@{
+    var grid = new WebGrid(source: Model.ContactModels,ajaxUpdateContainerId : "grid",
+        defaultSort: "FirstName",
+        canSort: true,
+        canPage: false);
+}
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Meeting</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Time)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Time)
+            @Html.ValidationMessageFor(model => model.Time)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Place)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Place)
+            @Html.ValidationMessageFor(model => model.Place)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Category, "Category")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CategoryID", String.Empty)
+        </div>
+
+        @*@foreach (var item in Model.ContactModels)
+        {
+            @Html.CheckBox(item.FirstName, new { value=item.FirstName + " " + item.LastName});@(item.FirstName + " " + item.LastName  )                                                                           
+        }*@
+
+        <div id="grid">
+        @Html.Label("Assign contacts")
+        @grid.GetHtml(
+        tableStyle: "grid",
+        headerStyle: "head",
+        alternatingRowStyle: "webgrid-alternating-row",
+        columns: grid.Columns(
+            grid.Column(
+                format: @<text><input class="check-box"  id="assignChkBx"name="assignChkBx" type="checkbox" value="@item.ContactID"/></text>),
+            grid.Column(header: "First Name", format: (item) => new HtmlString(item.FirstName)),
+            grid.Column(header: "Last Name", format: (item) => new HtmlString(item.LastName))))
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
