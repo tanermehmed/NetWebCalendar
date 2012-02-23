@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebCalendar.Models;
@@ -13,24 +12,18 @@ namespace WebCalendar.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private IUserRepository userRepository;
+        private readonly IUserRepository userRepository;
 
         public AccountController(IUserRepository repository)
         {
             userRepository = repository;
         }
 
-        //
-        // GET: /Account/LogOn
-
         [AllowAnonymous]
         public PartialViewResult LogOn()
         {
             return PartialView("LogOn", new LogOnModel());
         }
-
-        //
-        // POST: /Account/JsonLogOn
 
         [AllowAnonymous]
         [HttpPost]
@@ -49,12 +42,8 @@ namespace WebCalendar.Controllers
                 }
             }
 
-            // If we got this far, something failed
             return Json(new { errors = GetErrorsFromModelState() });
         }
-
-        //
-        // POST: /Account/LogOn
 
         [AllowAnonymous]
         [HttpPost]
@@ -80,12 +69,8 @@ namespace WebCalendar.Controllers
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
-
-        //
-        // GET: /Account/LogOff
 
         public ActionResult LogOff()
         {
@@ -94,17 +79,11 @@ namespace WebCalendar.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //
-        // GET: /Account/Register
-
         [AllowAnonymous]
         public PartialViewResult Register()
         {
             return PartialView("Register", new RegisterModel());
         }
-
-        //
-        // POST: /Account/JsonRegister
 
         [AllowAnonymous]
         [HttpPost]
@@ -112,7 +91,6 @@ namespace WebCalendar.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 System.Web.Security.Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
 
@@ -128,12 +106,8 @@ namespace WebCalendar.Controllers
                 }
             }
 
-            // If we got this far, something failed
             return Json(new { errors = GetErrorsFromModelState() });
         }
-
-        //
-        // POST: /Account/Register
 
         [AllowAnonymous]
         [HttpPost]
@@ -141,7 +115,6 @@ namespace WebCalendar.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 System.Web.Security.Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
 
@@ -158,27 +131,19 @@ namespace WebCalendar.Controllers
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
-
-        //
-        // GET: /Account/ChangePassword
 
         public ActionResult ChangePassword()
         {
             return View();
         }
 
-        //
-        // POST: /Account/ChangePassword
-
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordModel model)
         {
             if (ModelState.IsValid)
             {
-
                 // ChangePassword will throw an exception rather
                 // than return false in certain failure scenarios.
                 bool changePasswordSucceeded;
@@ -202,12 +167,8 @@ namespace WebCalendar.Controllers
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
-
-        //
-        // GET: /Account/ChangePasswordSuccess
 
         public ActionResult ChangePasswordSuccess()
         {

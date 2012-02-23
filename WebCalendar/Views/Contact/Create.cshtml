@@ -15,56 +15,46 @@
 {
     @Html.ValidationSummary(true)
     @Html.ValidationMessageFor(model => model.FirstName)
+    @Html.ValidationMessageFor(model => model.LastName)
     @Html.ValidationMessageFor(model => model.Email)
     @Html.ValidationMessageFor(model => model.DateOfBirth)
+    @Html.ValidationMessageFor(model => model.Phone)
+    @Html.ValidationMessageFor(model => model.Address)
+    @Html.ValidationMessageFor(model => model.Comment)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.FirstName)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.FirstName, new { @class = "login-text" })
+            @Html.TextBoxFor(model => model.FirstName, new { @class = "input-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.LastName)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.LastName, new { @class = "login-text" })
+            @Html.TextBoxFor(model => model.LastName, new { @class = "input-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Email)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Email, new { @class = "login-text" })
+            @Html.TextBoxFor(model => model.Email, new { @class = "input-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.DateOfBirth)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "login-text datepicker" })
+            @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "input-text datepicker" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Phone)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Phone, new { @class = "login-text" })
+            @Html.TextBoxFor(model => model.Phone, new { @class = "input-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Address)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Address, new { @class = "login-text" })
+            @Html.TextBoxFor(model => model.Address, new { @class = "input-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Comment)
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.Comment, new { @class = "login-text" })
+            @Html.TextAreaFor(model => model.Comment, new { @class = "input-text" })
         </div>
 
         <p>

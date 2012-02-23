@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebCalendar.DAL;
 using WebCalendar.Models;
@@ -13,15 +10,12 @@ namespace WebCalendar.Controllers
     [Authorize]
     public class CategoryController : Controller
     {
-        private ICategoryRepository repository;
+        private readonly ICategoryRepository repository;
 
         public CategoryController(ICategoryRepository rep)
         {
             repository = rep;
         }
-
-        //
-        // GET: /Categories/
 
         public ViewResult Index()
         {
@@ -35,16 +29,10 @@ namespace WebCalendar.Controllers
             return View(categories);
         }
 
-        //
-        // GET: /Categories/Create
-
         public ActionResult Create()
         {
             return View();
         }
-
-        //
-        // POST: /Categories/Create
 
         [HttpPost]
         public ActionResult Create(CategoryViewModel categoryModel)
@@ -60,18 +48,12 @@ namespace WebCalendar.Controllers
             return View(categoryModel);
         }
 
-        //
-        // GET: /Categories/Edit/5
-
         public ActionResult Edit(int id)
         {
             Category category = repository.Get(id);
             CategoryViewModel categoryModel = new CategoryViewModel(category);
             return View(categoryModel);
         }
-
-        //
-        // POST: /Categories/Edit/5
 
         [HttpPost]
         public ActionResult Edit(CategoryViewModel categoryModel)
@@ -86,18 +68,12 @@ namespace WebCalendar.Controllers
             return View(categoryModel);
         }
 
-        //
-        // GET: /Categories/Delete/5
-
         public ActionResult Delete(int id)
         {
             Category category = repository.Get(id);
             CategoryViewModel categoryModel = new CategoryViewModel(category);
             return View(categoryModel);
         }
-
-        //
-        // POST: /Categories/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

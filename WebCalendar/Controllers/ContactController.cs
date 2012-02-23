@@ -1,28 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebCalendar.DAL;
 using WebCalendar.Models;
-using System.Text.RegularExpressions;
 
 namespace WebCalendar.Controllers
 {
     [Authorize]
     public class ContactController : Controller
     {
-        private IContactRepository repository;
+        private readonly IContactRepository repository;
 
         public ContactController(IContactRepository rep)
         {
             repository = rep;
         }
-
-        //
-        // GET: /Contact/
 
         public ViewResult Index()
         {
@@ -35,9 +28,6 @@ namespace WebCalendar.Controllers
             return View(contactsModel);
         }
 
-        //
-        // GET: /Contact/Details/5
-
         public ViewResult Details(int id)
         {
             Contact contact = repository.Get(id);
@@ -45,16 +35,10 @@ namespace WebCalendar.Controllers
             return View(contactModel);
         }
 
-        //
-        // GET: /Contact/Create
-
         public ActionResult Create()
         {
             return View();
         } 
-
-        //
-        // POST: /Contact/Create
 
         [HttpPost]
         public ActionResult Create(ContactViewModel contactModel)
@@ -69,19 +53,13 @@ namespace WebCalendar.Controllers
 
             return View(contactModel);
         }
-        
-        //
-        // GET: /Contact/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Contact contact = repository.Get(id);
             ContactViewModel contactModel = new ContactViewModel(contact);
             return View(contactModel);
         }
-
-        //
-        // POST: /Contact/Edit/5
 
         [HttpPost]
         public ActionResult Edit(ContactViewModel contactModel)
@@ -97,18 +75,12 @@ namespace WebCalendar.Controllers
             return View(contactModel);
         }
 
-        //
-        // GET: /Contact/Delete/5
- 
         public ActionResult Delete(int id)
         {
             Contact contact = repository.Get(id);
             ContactViewModel contactModel = new ContactViewModel(contact);
             return View(contactModel);
         }
-
-        //
-        // POST: /Contact/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

@@ -41,7 +41,7 @@
             @Html.LabelFor(model => model.Time)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Time, new { @class = "login-text datepicker" })
+            @Html.TextBoxFor(model => model.Time, new { @class = "input-text datepicker" })
             @Html.ValidationMessageFor(model => model.Time)
         </div>
 
@@ -49,7 +49,7 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Description, new { @class = "login-text" })
+            @Html.TextBoxFor(model => model.Description, new { @class = "input-text" })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
@@ -57,7 +57,7 @@
             @Html.LabelFor(model => model.Place)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.Place, new { @class = "login-text" })
+            @Html.TextBoxFor(model => model.Place, new { @class = "input-text" })
             @Html.ValidationMessageFor(model => model.Place)
         </div>
 

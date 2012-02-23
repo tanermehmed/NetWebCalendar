@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Data;
-using System.Data.Objects.DataClasses;
 
 namespace WebCalendar.DAL
 {
     public class MeetingRepository : IMeetingRepository
     {
-        WebCalendarEntities db = new WebCalendarEntities();
+        private readonly WebCalendarEntities db = new WebCalendarEntities();
 
         public IQueryable<Meeting> All(string username)
         {
@@ -33,8 +30,6 @@ namespace WebCalendar.DAL
         public List<Meeting> FindByGivenCriteria(List<Meeting> meetings,
             DateTime? startDate, DateTime? endDate, string categoryName, string firstName, string lastName)
         {
-            //var meetings = db.Meetings.ToList();
-
             if (startDate != null)
             {
                 meetings = meetings.Where(m => m.Time > startDate).ToList();

@@ -1,5 +1,4 @@
-﻿@using WebCalendar.Models
-@model IEnumerable<WebCalendar.Models.MeetingViewModel>
+﻿@model IEnumerable<WebCalendar.Models.MeetingViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -28,8 +27,6 @@
             {
                 list.Append(contactModel.FirstName + " " + contactModel.LastName + ",");
             }
-
-
         }
         if (list.Length > 0)
         {
@@ -43,22 +40,22 @@
 {
 <div class="field">
         <div class="editor-field">
-           <input class="datepicker login-text" placeholder="Start date" type="text" id="startDate" name="startDate" />
+           <input class="datepicker input-text" placeholder="Start date" type="text" id="startDate" name="startDate" />
         </div>
     </div>
     <div class="field">
         <div class="editor-field">
-           <input class="datepicker login-text" placeholder="End date" type="endDate" id="endDate" name="endDate" />
+           <input class="datepicker input-text" placeholder="End date" type="endDate" id="endDate" name="endDate" />
         </div>
     </div>
     <div class="field">
         <div class="editor-field">
-           <input class="login-text" placeholder="Contact first name"type="text" id="firstName" name="firstName" />
+           <input class="input-text" placeholder="Contact first name"type="text" id="firstName" name="firstName" />
         </div>
     </div>
     <div class="field">
         <div class="editor-field">
-           <input class="login-text" placeholder="Contact last name" type="text" id="lastName" name="lastName" />
+           <input class="input-text" placeholder="Contact last name" type="text" id="lastName" name="lastName" />
         </div>
     </div>
     <div class="field">

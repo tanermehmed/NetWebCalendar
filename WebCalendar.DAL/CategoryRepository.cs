@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Data;
+using System.Linq;
 
 namespace WebCalendar.DAL
 {
     public class CategoryRepository : ICategoryRepository
     {
-        WebCalendarEntities db = new WebCalendarEntities();
+        private readonly WebCalendarEntities db = new WebCalendarEntities();
 
         public IQueryable<Category> All(string username)
         {
@@ -41,10 +39,6 @@ namespace WebCalendar.DAL
             if (!category.Meetings.Any())
             {
                 db.Categories.DeleteObject(category);
-            }
-            else
-            {
-                throw new InvalidOperationException("This category cannot be deleted because has meetings.");
             }
         }
 

@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using WebCalendar.DAL;
 using WebCalendar.Models;
-using System.Text;
-using System.Data.Objects.DataClasses;
 
 namespace WebCalendar.Controllers
 {
     [Authorize]
     public class MeetingController : Controller
     {
-        private IMeetingRepository meetingRepository;
-        private IContactRepository contactRepository;
-        private ICategoryRepository categoryRepository;
+        private readonly IMeetingRepository meetingRepository;
+        private readonly IContactRepository contactRepository;
+        private readonly ICategoryRepository categoryRepository;
 
         public MeetingController(IMeetingRepository rep, IContactRepository contactRep, ICategoryRepository categoryRep)
         {
@@ -25,9 +20,6 @@ namespace WebCalendar.Controllers
             contactRepository = contactRep;
             categoryRepository = categoryRep;
         }
-
-        //
-        // GET: /Meeting/
 
         public ViewResult Index()
         {
@@ -117,9 +109,6 @@ namespace WebCalendar.Controllers
             return View(meetingsModel);
         }
 
-        //
-        // GET: /Meeting/Create
-
         public ActionResult Create()
         {
             IQueryable<Contact> contacts = contactRepository.All(User.Identity.Name);
@@ -139,9 +128,6 @@ namespace WebCalendar.Controllers
 
             return View(new MeetingViewModel(contactsModel));
         }
-
-        //
-        // POST: /Meeting/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection form)
@@ -195,9 +181,6 @@ namespace WebCalendar.Controllers
             return contactIds;
         }
 
-        //
-        // GET: /Meeting/Edit/5
-
         public ActionResult Edit(int id)
         {
             Meeting meeting = meetingRepository.Get(id);
@@ -222,9 +205,6 @@ namespace WebCalendar.Controllers
                                                 meeting.Category != null ? meeting.Category.Name : string.Empty);
             return View(meetingModel);
         }
-
-        //
-        // POST: /Meeting/Edit/5
 
         [HttpPost]
         public ActionResult Edit(FormCollection form,int id)
@@ -253,9 +233,6 @@ namespace WebCalendar.Controllers
             return View(meetingModel);
         }
 
-        //
-        // GET: /Meeting/Delete/5
-
         public ActionResult Delete(int id)
         {
             Meeting meeting = meetingRepository.Get(id);
@@ -263,9 +240,6 @@ namespace WebCalendar.Controllers
 
             return View(meetingModel);
         }
-
-        //
-        // POST: /Meeting/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)

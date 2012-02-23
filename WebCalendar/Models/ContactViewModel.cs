@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using WebCalendar.DAL;
-using System.Data.Objects.DataClasses;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebCalendar.Models
@@ -13,7 +10,10 @@ namespace WebCalendar.Models
         public int ContactID { get; set; }
 
         [Required(ErrorMessage="First name is required")]
+        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string FirstName { get; set; }
+
+        [StringLength(30, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string LastName { get; set; }
 
         [DataType(DataType.EmailAddress)]
@@ -23,8 +23,14 @@ namespace WebCalendar.Models
 
         [DataType(DataType.DateTime, ErrorMessage="Please enter valid date and time!")]
         public DateTime? DateOfBirth { get; set; }
+
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         public string Phone { get; set; }
+
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         public string Address { get; set; }
+
+        [StringLength(500, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         public string Comment { get; set; }
 
         public ContactViewModel()

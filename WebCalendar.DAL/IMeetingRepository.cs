@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using WebCalendar.DAL;
-using System.Data.Objects.DataClasses;
 
 namespace WebCalendar.DAL
 {

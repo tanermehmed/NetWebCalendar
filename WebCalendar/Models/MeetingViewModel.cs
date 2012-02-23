@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using WebCalendar.DAL;
-using System.Data.Objects.DataClasses;
-using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebCalendar.Models
@@ -14,11 +11,12 @@ namespace WebCalendar.Models
         public int MeetingID { get; set; }
 
         [Required(ErrorMessage="Date and time are required")]
-        public DateTime? Time { get; set; }
+        public DateTime Time { get; set; }
 
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string Place { get; set; }
         public CategoryViewModel Category { get; set; }
         public List<ContactViewModel> ContactModels { get; set; }
@@ -32,7 +30,7 @@ namespace WebCalendar.Models
             this.ContactModels = contacts;
         }
 
-        public MeetingViewModel(int meetingID, DateTime? time, string description, string place, CategoryViewModel category, List<ContactViewModel> contacts)
+        public MeetingViewModel(int meetingID, DateTime time, string description, string place, CategoryViewModel category, List<ContactViewModel> contacts)
         {
             this.MeetingID = meetingID;
             this.Time = time;

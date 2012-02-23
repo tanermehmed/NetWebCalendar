@@ -50,3 +50,16 @@ C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\obj\Debug\WebCalendar.Tests.dll
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\obj\Debug\WebCalendar.Tests.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.Tests.dll.config
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.Tests.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.Tests.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.DAL.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\Ninject.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.DAL.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\Ninject.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\bin\Debug\Ninject.xml
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\obj\Debug\ResolveAssemblyReference.cache
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\obj\Debug\WebCalendar.Tests.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar.Tests\obj\Debug\WebCalendar.Tests.pdb

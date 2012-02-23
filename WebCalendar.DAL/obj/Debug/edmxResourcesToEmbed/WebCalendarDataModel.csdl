@@ -23,11 +23,7 @@
       <End Role="Applications" EntitySet="Applications" />
       <End Role="Users" EntitySet="Users" />
     </AssociationSet>
-    <AssociationSet Name="FK_Category_Users" Association="WebCalendarModel.FK_Category_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Category" EntitySet="Categories" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Meetings_Category" Association="WebCalendarModel.FK_Meetings_Category">
+    <AssociationSet Name="FK_Meetings_Category1" Association="WebCalendarModel.FK_Meetings_Category1">
       <End Role="Category" EntitySet="Categories" />
       <End Role="Meetings" EntitySet="Meetings" />
     </AssociationSet>
@@ -77,9 +73,8 @@
     </Key>
     <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-    <Property Name="UserID" Type="Guid" />
-    <NavigationProperty Name="User" Relationship="WebCalendarModel.FK_Category_Users" FromRole="Category" ToRole="Users" />
-    <NavigationProperty Name="Meetings" Relationship="WebCalendarModel.FK_Meetings_Category" FromRole="Category" ToRole="Meetings" />
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="Meetings" Relationship="WebCalendarModel.FK_Meetings_Category1" FromRole="Category" ToRole="Meetings" />
   </EntityType>
   <EntityType Name="Contact">
     <Key>
@@ -103,12 +98,12 @@
       <PropertyRef Name="MeetingID" />
     </Key>
     <Property Name="MeetingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Time" Type="DateTime" />
-    <Property Name="Description" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Time" Type="DateTime" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
     <Property Name="Place" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="CategoryID" Type="Int32" />
     <Property Name="UserID" Type="Guid" />
-    <NavigationProperty Name="Category" Relationship="WebCalendarModel.FK_Meetings_Category" FromRole="Meetings" ToRole="Category" />
+    <NavigationProperty Name="Category" Relationship="WebCalendarModel.FK_Meetings_Category1" FromRole="Meetings" ToRole="Category" />
     <NavigationProperty Name="User" Relationship="WebCalendarModel.FK_Meetings_Users" FromRole="Meetings" ToRole="Users" />
     <NavigationProperty Name="Contacts" Relationship="WebCalendarModel.MeetingsContacts" FromRole="Meetings" ToRole="Contacts" />
   </EntityType>
@@ -145,9 +140,9 @@
     <Property Name="UserId" Type="Guid" Nullable="false" />
     <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
     <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="User" Relationship="WebCalendarModel.FK_MyUsers_Users" FromRole="MyUsers" ToRole="Users" />
   </EntityType>
   <EntityType Name="Profile">
@@ -192,7 +187,6 @@
     <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
     <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
     <NavigationProperty Name="Application" Relationship="WebCalendarModel.UserApplication" FromRole="Users" ToRole="Applications" />
-    <NavigationProperty Name="Categories" Relationship="WebCalendarModel.FK_Category_Users" FromRole="Users" ToRole="Category" />
     <NavigationProperty Name="Contacts" Relationship="WebCalendarModel.FK_Contacts_Users" FromRole="Users" ToRole="Contacts" />
     <NavigationProperty Name="Meetings" Relationship="WebCalendarModel.FK_Meetings_Users" FromRole="Users" ToRole="Meetings" />
     <NavigationProperty Name="Membership" Relationship="WebCalendarModel.MembershipUser" FromRole="Users" ToRole="Memberships" />
@@ -236,19 +230,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Category_Users">
-    <End Role="Users" Type="WebCalendarModel.User" Multiplicity="0..1" />
-    <End Role="Category" Type="WebCalendarModel.Category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="Category">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Meetings_Category">
+  <Association Name="FK_Meetings_Category1">
     <End Role="Category" Type="WebCalendarModel.Category" Multiplicity="0..1" />
     <End Role="Meetings" Type="WebCalendarModel.Meeting" Multiplicity="*" />
     <ReferentialConstraint>

@@ -5,8 +5,8 @@
 
 @if (Request.IsAuthenticated)
 {
-    <h2>You are already signed in!</h2>
-    <p>Go to your @Html.ActionLink("Meetings", "Index", "Meeting",null, new { @class="link"})</p>
+    <h2>You are already logged in!</h2>
+    <p>Go to your @Html.ActionLink("Calendar", "Index", "Meeting",null, new { @class="link"})</p>
 }
 else
 {

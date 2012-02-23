@@ -82,3 +82,24 @@ C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar\bin\N
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar\obj\Debug\WebCalendar.dll
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar\obj\Debug\WebCalendar.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\WebCalendar.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\WebCalendar.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\EntityFramework.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\Microsoft.Web.Infrastructure.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\Microsoft.Web.Optimization.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\Ninject.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\System.Web.Helpers.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\System.Web.Mvc.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\System.Web.Providers.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\System.Web.Razor.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\System.Web.WebPages.Deployment.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\System.Web.WebPages.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\System.Web.WebPages.Razor.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\WebCalendar.DAL.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\WebCalendar.DAL.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\EntityFramework.xml
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\Ninject.pdb
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\bin\Ninject.xml
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\obj\Debug\ResolveAssemblyReference.cache
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\obj\Debug\WebCalendar.dll
+D:\Junior Developers\Tancho\ASP.NET MVC Project\WebCalendar\WebCalendar\obj\Debug\WebCalendar.pdb

@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Data;
 
 namespace WebCalendar.DAL
 {
     public class ContactRepository : IContactRepository
     {
-        WebCalendarEntities db = new WebCalendarEntities();
+        private readonly WebCalendarEntities db = new WebCalendarEntities();
 
         public IQueryable<Contact> All(string username)
         {

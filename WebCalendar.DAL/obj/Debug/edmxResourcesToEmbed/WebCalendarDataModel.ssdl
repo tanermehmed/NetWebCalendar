@@ -13,15 +13,11 @@
     <EntitySet Name="sysdiagrams" EntityType="WebCalendarModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Users" EntityType="WebCalendarModel.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UsersInRoles" EntityType="WebCalendarModel.Store.UsersInRoles" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Category_Users" Association="WebCalendarModel.Store.FK_Category_Users">
-      <End Role="Users" EntitySet="Users" />
-      <End Role="Category" EntitySet="Category" />
-    </AssociationSet>
     <AssociationSet Name="FK_Contacts_Users" Association="WebCalendarModel.Store.FK_Contacts_Users">
       <End Role="Users" EntitySet="Users" />
       <End Role="Contacts" EntitySet="Contacts" />
     </AssociationSet>
-    <AssociationSet Name="FK_Meetings_Category" Association="WebCalendarModel.Store.FK_Meetings_Category">
+    <AssociationSet Name="FK_Meetings_Category1" Association="WebCalendarModel.Store.FK_Meetings_Category1">
       <End Role="Category" EntitySet="Category" />
       <End Role="Meetings" EntitySet="Meetings" />
     </AssociationSet>
@@ -84,7 +80,7 @@
     </Key>
     <Property Name="CategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="20" />
-    <Property Name="UserID" Type="uniqueidentifier" />
+    <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
   <EntityType Name="Contacts">
     <Key>
@@ -106,19 +102,19 @@
       <PropertyRef Name="MeetingID" />
     </Key>
     <Property Name="MeetingID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="Time" Type="datetime" />
-    <Property Name="Description" Type="nvarchar" MaxLength="100" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="Place" Type="nvarchar" MaxLength="50" />
     <Property Name="CategoryID" Type="int" />
     <Property Name="UserID" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="MeetingsContacts">
     <Key>
-      <PropertyRef Name="ContactID" />
       <PropertyRef Name="MeetingID" />
+      <PropertyRef Name="ContactID" />
     </Key>
-    <Property Name="ContactID" Type="int" Nullable="false" />
     <Property Name="MeetingID" Type="int" Nullable="false" />
+    <Property Name="ContactID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Memberships">
     <Key>
@@ -151,9 +147,9 @@
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
-    <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Profiles">
     <Key>
@@ -202,18 +198,6 @@
     <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Category_Users">
-    <End Role="Users" Type="WebCalendarModel.Store.Users" Multiplicity="0..1" />
-    <End Role="Category" Type="WebCalendarModel.Store.Category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Users">
-        <PropertyRef Name="UserId" />
-      </Principal>
-      <Dependent Role="Category">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Contacts_Users">
     <End Role="Users" Type="WebCalendarModel.Store.Users" Multiplicity="0..1" />
     <End Role="Contacts" Type="WebCalendarModel.Store.Contacts" Multiplicity="*" />
@@ -226,7 +210,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Meetings_Category">
+  <Association Name="FK_Meetings_Category1">
     <End Role="Category" Type="WebCalendarModel.Store.Category" Multiplicity="0..1" />
     <End Role="Meetings" Type="WebCalendarModel.Store.Meetings" Multiplicity="*" />
     <ReferentialConstraint>

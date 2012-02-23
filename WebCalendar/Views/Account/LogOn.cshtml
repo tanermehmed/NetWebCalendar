@@ -2,8 +2,8 @@
 
 @using (Html.BeginForm((string)ViewBag.FormAction, "Account")) {
 
-        @Html.TextBoxFor(m => m.UserName, new { placeholder = "Username", @class = "login-text"})
-        @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "login-text" })
+        @Html.TextBoxFor(m => m.UserName, new { placeholder = "Username", @class = "input-text"})
+        @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "input-text" })
 
         <input type="submit" value="Log On" title="Log On" />
         <div>
