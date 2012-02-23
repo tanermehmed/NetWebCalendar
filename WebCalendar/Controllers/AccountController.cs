@@ -51,19 +51,26 @@ namespace WebCalendar.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (System.Web.Security.Membership.ValidateUser(model.UserName, model.Password))
+                try
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl))
+                    if (System.Web.Security.Membership.ValidateUser(model.UserName, model.Password))
                     {
-                        return Redirect(returnUrl);
+                        FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
+                        if (Url.IsLocalUrl(returnUrl))
+                        {
+                            return Redirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Meeting");
+                        }
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Meeting");
+                        ModelState.AddModelError("", "The user name or password provided is incorrect.");
                     }
                 }
-                else
+                catch (Exception ex)
                 {
                     ModelState.AddModelError("", "The user name or password provided is incorrect.");
                 }
