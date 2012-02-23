@@ -5,20 +5,23 @@ using System.Web;
 using WebCalendar.DAL;
 using System.Data.Objects.DataClasses;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebCalendar.Models
 {
     public class MeetingViewModel
     {
         public int MeetingID { get; set; }
+
+        [Required(ErrorMessage="Date and time are required")]
         public DateTime? Time { get; set; }
+
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
+
         public string Place { get; set; }
         public CategoryViewModel Category { get; set; }
         public List<ContactViewModel> ContactModels { get; set; }
-        //public List<Contact> Contacts { get; set; }
-
-        //public List<int> ContactIds { get; set; }
 
         public MeetingViewModel()
         {
@@ -59,25 +62,24 @@ namespace WebCalendar.Models
         {
             Meeting meeting = new Meeting();
 
-            //EntityCollection<Contact> contactsCollection = new EntityCollection<Contact>();
-
-            //foreach (var item in this.ContactModels)
-            //{
-            //    meeting.Contacts.Add(item);
-            //}
-
-            
             CategoryViewModel categoryModel = new CategoryViewModel();
             categoryModel = this.Category;
-            Category category = categoryModel.ToCategory();
+            Category category = new Category();
+            if (this.Category == null)
+            {
+                meeting.CategoryID = null;
+            }
+            else
+            {
+                category = categoryModel.ToCategory();
+                meeting.CategoryID = category.CategoryID;
+            }
 
             meeting.MeetingID = this.MeetingID;
             meeting.Time = this.Time;
             meeting.Description = this.Description;
             meeting.Place = this.Place;
-            meeting.CategoryID = category.CategoryID;
-            //meeting.Contacts = contactsCollection;
-
+            
             return meeting;
         }
     }

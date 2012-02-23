@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WebCalendar.DAL;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebCalendar.Models
 {
     public class CategoryViewModel
     {
         public int CategoryID { get; set; }
+        [Required(ErrorMessage="Name is required!")]
         public string Name { get; set; }
 
         public CategoryViewModel()
@@ -23,8 +25,16 @@ namespace WebCalendar.Models
 
         public CategoryViewModel(Category category)
         {
-            this.CategoryID = category.CategoryID;
-            this.Name = category.Name;
+            if (category != null)
+            {
+                this.CategoryID = category.CategoryID;
+                this.Name = category.Name;
+            }
+            else
+            {
+                this.CategoryID = 0;
+                this.Name = string.Empty;
+            }
         }
 
         public Category ToCategory()

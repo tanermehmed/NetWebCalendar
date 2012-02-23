@@ -3,10 +3,11 @@
 
 @{
     ViewBag.Title = "Create";
+    ViewBag.CurrentPage = "Meeting";
 }
 
 @{
-    var grid = new WebGrid(source: Model.ContactModels,ajaxUpdateContainerId : "grid",
+    var grid = new WebGrid(source: Model.ContactModels, ajaxUpdateContainerId: "grid",
         defaultSort: "FirstName",
         canSort: true,
         canPage: false);
@@ -16,66 +17,63 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
+<div id="add-item">
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Meeting</legend>
+    @Html.ValidationMessageFor(model => model.Time)
+    @Html.ValidationMessageFor(model => model.Description)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Time)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Time)
-            @Html.ValidationMessageFor(model => model.Time)
+            @Html.TextBoxFor(model => model.Time, new { @class = "login-text datepicker" })
+            
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
-            @Html.ValidationMessageFor(model => model.Description)
+            @Html.TextBoxFor(model => model.Description, new { @class = "login-text" })
+            
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Place)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Place)
-            @Html.ValidationMessageFor(model => model.Place)
+            @Html.TextBoxFor(model => model.Place, new { @class = "login-text" })
+           
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Category, "Category")
         </div>
-        <div class="editor-field">
+        <div class="editor-label">
             @Html.DropDownList("CategoryID", String.Empty)
         </div>
-
-        @*@foreach (var item in Model.ContactModels)
-        {
-            @Html.CheckBox(item.FirstName, new { value=item.FirstName + " " + item.LastName});@(item.FirstName + " " + item.LastName  )                                                                           
-        }*@
-
-        <div id="grid">
-        @Html.Label("Assign contacts")
-        @grid.GetHtml(
-        tableStyle: "grid",
-        headerStyle: "head",
-        alternatingRowStyle: "webgrid-alternating-row",
-        columns: grid.Columns(
-            grid.Column(
-                format: @<text><input class="check-box"  id="assignChkBx"name="assignChkBx" type="checkbox" value="@item.ContactID"/></text>),
-            grid.Column(header: "First Name", format: (item) => new HtmlString(item.FirstName)),
-            grid.Column(header: "Last Name", format: (item) => new HtmlString(item.LastName))))
+        <div>
+            <a id="open-dialog" class="link" href="#">Add Contacts</a>
+        </div>
+        <div id="dialog" title="Assign contacts">
+            <div id="grid">
+            @grid.GetHtml(
+            tableStyle: "grid",
+            headerStyle: "head",
+            alternatingRowStyle: "webgrid-alternating-row",
+            columns: grid.Columns(
+                grid.Column(
+                    format: @<text><input class="check-box"  id="assignChkBx"name="assignChkBx" type="checkbox" value="@item.ContactID"/></text>),
+                grid.Column(format: (item) => new HtmlString(item.FirstName)),
+                grid.Column(format: (item) => new HtmlString(item.LastName))))
+            </div>
         </div>
         <p>
             <input type="submit" value="Create" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
         </p>
-    </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<img src="../images/meeting-image.png" alt="meeting" />
 </div>

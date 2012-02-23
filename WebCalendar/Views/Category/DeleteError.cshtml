@@ -1,8 +1,9 @@
 ﻿@{
     ViewBag.Title = "DeleteError";
+    ViewBag.CurrentPage = "Category";
 }
 
 <h2>Delete Error</h2>
 
 <p>This category cannot be deleted because is part of a meeting.</p>
-@Html.ActionLink("Back to List", "Index")
+@Html.ActionLink("Back to List", "Index", null, new { @class = "link" })

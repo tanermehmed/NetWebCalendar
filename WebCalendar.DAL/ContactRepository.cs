@@ -30,38 +30,7 @@ namespace WebCalendar.DAL
             { 
                 if (contact.DateOfBirth != null)
                 {
-                    int currentYear = DateTime.Now.Year;
-                    int currentMonth = DateTime.Now.Month;
-
-                    DateTime? birthday = contact.DateOfBirth;
-
-                    if (currentMonth > birthday.Value.Month)
-                    {
-                        currentYear++;
-                    }
-
-                    DateTime meetingTime = new DateTime(
-                        currentYear,
-                        birthday.Value.Month,
-                        birthday.Value.Day - 1,
-                        14, 0, 0);
-
-                    if(!db.Categories.Any(x=>x.Name=="Birthday" && x.UserID == user.UserId))
-                    {
-                        Category category = new Category();
-                        category.Name = "Birthday";
-                        category.UserID = db.Users.SingleOrDefault(u => u.UserName == username).UserId;
-                        db.Categories.AddObject(category);
-                        db.SaveChanges();
-                    }
-
-                    Meeting meeting = new Meeting();
-                    meeting.UserID = user.UserId;
-                    meeting.CategoryID = db.Categories.SingleOrDefault(c => c.Name == "Birthday" && c.UserID == user.UserId).CategoryID;
-                    meeting.Time = meetingTime;
-                    meeting.Description = "Congratulate " + contact.FirstName + "!";
-                    meeting.Contacts.Add(contact);
-                    db.Meetings.AddObject(meeting);
+                    ContactBirthdayMeeting(contact, username, user);
                 }
                 db.Contacts.AddObject(contact);
             }
@@ -70,6 +39,42 @@ namespace WebCalendar.DAL
                 db.Contacts.Attach(contact);
                 db.ObjectStateManager.ChangeObjectState(contact, EntityState.Modified);
             }
+        }
+
+        private void ContactBirthdayMeeting(Contact contact, string username, User user)
+        {
+            int currentYear = DateTime.Now.Year;
+            int currentMonth = DateTime.Now.Month;
+
+            DateTime? birthday = contact.DateOfBirth;
+
+            if (currentMonth > birthday.Value.Month)
+            {
+                currentYear++;
+            }
+
+            DateTime meetingTime = new DateTime(
+                currentYear,
+                birthday.Value.Month,
+                birthday.Value.Day - 1,
+                14, 0, 0);
+
+            if (!db.Categories.Any(x => x.Name == "Birthday" && x.UserID == user.UserId))
+            {
+                Category category = new Category();
+                category.Name = "Birthday";
+                category.UserID = db.Users.SingleOrDefault(u => u.UserName == username).UserId;
+                db.Categories.AddObject(category);
+                db.SaveChanges();
+            }
+
+            Meeting meeting = new Meeting();
+            meeting.UserID = user.UserId;
+            meeting.CategoryID = db.Categories.SingleOrDefault(c => c.Name == "Birthday" && c.UserID == user.UserId).CategoryID;
+            meeting.Time = meetingTime;
+            meeting.Description = "Congratulate " + contact.FirstName + "!";
+            meeting.Contacts.Add(contact);
+            db.Meetings.AddObject(meeting);
         }
 
         public void Delete(Contact contact)

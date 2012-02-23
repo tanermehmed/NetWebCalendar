@@ -2,12 +2,12 @@
 
 @using (Html.BeginForm((string)ViewBag.FormAction, "Account")) {
 
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
+        @Html.TextBoxFor(m => m.UserName, new { placeholder = "Username", @class = "login-text"})
+        @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "login-text" })
 
         <input type="submit" value="Log On" title="Log On" />
+        <div>
+            @Html.ValidationMessageFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
 }

@@ -16,3 +16,9 @@ C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 4\ASP.NET MVC FINAL PROJECT 3\A
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 4\ASP.NET MVC FINAL PROJECT 3\ASP.NET MVC FINAL PROJECT 1\WebCalendar\WebCalendar.DAL\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 4\ASP.NET MVC FINAL PROJECT 3\ASP.NET MVC FINAL PROJECT 1\WebCalendar\WebCalendar.DAL\obj\Debug\WebCalendar.DAL.dll
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 4\ASP.NET MVC FINAL PROJECT 3\ASP.NET MVC FINAL PROJECT 1\WebCalendar\WebCalendar.DAL\obj\Debug\WebCalendar.DAL.pdb
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.DAL\bin\Debug\WebCalendar.DAL.dll.config
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.DAL\bin\Debug\WebCalendar.DAL.dll
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.DAL\bin\Debug\WebCalendar.DAL.pdb
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.DAL\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.DAL\obj\Debug\WebCalendar.DAL.dll
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.DAL\obj\Debug\WebCalendar.DAL.pdb

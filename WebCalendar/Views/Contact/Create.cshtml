@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    ViewBag.CurrentPage = "Contact";
 }
 
 <h2>Create</h2>
@@ -9,74 +10,67 @@
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
+<div id="add-item">
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Contact</legend>
+    @Html.ValidationMessageFor(model => model.FirstName)
+    @Html.ValidationMessageFor(model => model.Email)
+    @Html.ValidationMessageFor(model => model.DateOfBirth)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.FirstName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName)
-            @Html.ValidationMessageFor(model => model.FirstName)
+            @Html.TextBoxFor(model => model.FirstName, new { @class = "login-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.LastName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
-            @Html.ValidationMessageFor(model => model.LastName)
+            @Html.TextBoxFor(model => model.LastName, new { @class = "login-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Email)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
-            @Html.ValidationMessageFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, new { @class = "login-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.DateOfBirth)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DateOfBirth)
-            @Html.ValidationMessageFor(model => model.DateOfBirth)
+            @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "login-text datepicker" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Phone)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Phone)
-            @Html.ValidationMessageFor(model => model.Phone)
+            @Html.TextBoxFor(model => model.Phone, new { @class = "login-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Address)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Address)
-            @Html.ValidationMessageFor(model => model.Address)
+            @Html.TextBoxFor(model => model.Address, new { @class = "login-text" })
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Comment)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Comment)
-            @Html.ValidationMessageFor(model => model.Comment)
+            @Html.TextAreaFor(model => model.Comment, new { @class = "login-text" })
         </div>
 
         <p>
             <input type="submit" value="Create" />
+             @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
         </p>
-    </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<img src="../images/address_book.png" alt="contact" />
 </div>

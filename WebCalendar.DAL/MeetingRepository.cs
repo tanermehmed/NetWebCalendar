@@ -76,7 +76,7 @@ namespace WebCalendar.DAL
             return db.Meetings.SingleOrDefault(m => m.MeetingID == id);
         }
 
-        public void InsertOrUpdate(Meeting meeting, int[] contacts, string username)
+        public void InsertOrUpdate(Meeting meeting, List<int> contacts, string username)
         {
             meeting.UserID = db.Users.SingleOrDefault(u => u.UserName == username).UserId;
 
@@ -100,16 +100,15 @@ namespace WebCalendar.DAL
                 m.Place = meeting.Place;
                 m.CategoryID = meeting.CategoryID;
                 m.Contacts.Clear();
+
                 if (contacts != null)
                 {
-                    foreach (var contact in contacts)
+                    foreach (var contactId in contacts)
                     {
-                        Contact c = db.Contacts.SingleOrDefault(x => x.ContactID == contact);
-                        m.Contacts.Add(c);
+                        Contact contact = db.Contacts.SingleOrDefault(c => c.ContactID == contactId);
+                        m.Contacts.Add(contact);
                     }
                 }
-                //db.Meetings.Attach(m);
-                //db.ObjectStateManager.ChangeObjectState(m, EntityState.Modified);
             }
         }
 

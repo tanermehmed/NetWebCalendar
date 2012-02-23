@@ -2,12 +2,10 @@
 
 @{
     ViewBag.Title = "Details";
+    ViewBag.CurrentPage = "Contact";
 }
 
-<h2>Details</h2>
-
-<fieldset>
-    <legend>Contact</legend>
+<h2>Contact details</h2>
 
     <div class="display-label">
          @Html.DisplayNameFor(model => model.FirstName)
@@ -57,9 +55,7 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Comment)
     </div>
-
-</fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ContactID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", null, new { id = Model.ContactID }, new { @class = "link" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
 </p>

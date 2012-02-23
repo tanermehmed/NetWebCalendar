@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<WebCalendar.Models.CategoryViewModel>
 @{
     ViewBag.Title = "Index";
+    ViewBag.CurrentPage = "Category";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "link" })
 </p>
 
 @{
@@ -26,9 +25,8 @@
           grid.Column("Name"),
           grid.Column(header: "Action", format: (item) =>
               new HtmlString(
-                     Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }).ToString() +
-                     Html.ActionLink("Details", "Details", new { id = item.CategoryID }).ToString() +
-                     Html.ActionLink("Delete", "Delete", new { id = item.CategoryID }).ToString()
+                     Html.ActionLink("Edit", "Edit", null, new { id = item.CategoryID }, new { @class = "link" }).ToString() +
+                     Html.ActionLink("Delete", "Delete", null, new { id = item.CategoryID }, new { @class = "link" }).ToString()
               )
      )
   )

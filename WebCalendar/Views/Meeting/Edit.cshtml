@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    ViewBag.CurrentPage = "Meeting";
 }
 
 @{
@@ -35,14 +36,12 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Meeting</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Time)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Time)
+            @Html.TextBoxFor(model => model.Time, new { @class = "login-text datepicker" })
             @Html.ValidationMessageFor(model => model.Time)
         </div>
 
@@ -50,7 +49,7 @@
             @Html.LabelFor(model => model.Description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Description)
+            @Html.TextBoxFor(model => model.Description, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
@@ -58,36 +57,37 @@
             @Html.LabelFor(model => model.Place)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Place)
+            @Html.TextBoxFor(model => model.Place, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.Place)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Category, "Category")
         </div>
+    
         <div class="editor-field">
             @Html.DropDownList("CategoryID", String.Empty)
         </div>
-
-        <div id="grid">
-        @Html.Label("Assigned contacts")
-        @grid.GetHtml(
-        tableStyle: "grid",
-        headerStyle: "head",
-        alternatingRowStyle: "webgrid-alternating-row",
-        columns: grid.Columns(
-        grid.Column(
-                format: (item) => new HtmlString(@IsChecked(item.ContactID))),
-            grid.Column(header: "First Name", format: (item) => new HtmlString(item.FirstName)),
-            grid.Column(header: "Last Name", format: (item) => new HtmlString(item.LastName))))
+        <div>
+            <a id="open-dialog" class="link" href="#">Add Contacts</a>
         </div>
+        <div id="dialog" title="Contacts">
+	        <div id="grid">
+                @grid.GetHtml(
+                tableStyle: "grid",
+                headerStyle: "head",
+                alternatingRowStyle: "webgrid-alternating-row",
+                columns: grid.Columns(
+                grid.Column(
+                        format: (item) => new HtmlString(@IsChecked(item.ContactID))),
+                    grid.Column(format: (item) => new HtmlString(item.FirstName)),
+                    grid.Column(format: (item) => new HtmlString(item.LastName))))
+            </div>
+        </div>
+        
 
         <p>
             <input type="submit" value="Save" />
+            @Html.ActionLink("Back to List", "AllMeetings", null, new { @class = "link" })
         </p>
-    </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "AllMeetings")
-</div>

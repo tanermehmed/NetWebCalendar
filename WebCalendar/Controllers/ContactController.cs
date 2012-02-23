@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebCalendar.DAL;
 using WebCalendar.Models;
+using System.Text.RegularExpressions;
 
 namespace WebCalendar.Controllers
 {
@@ -14,12 +15,10 @@ namespace WebCalendar.Controllers
     public class ContactController : Controller
     {
         private IContactRepository repository;
-        private IMeetingRepository meetingRepository;
 
-        public ContactController(IContactRepository rep, IMeetingRepository meetingRep)
+        public ContactController(IContactRepository rep)
         {
             repository = rep;
-            meetingRepository = meetingRep;
         }
 
         //
@@ -114,22 +113,9 @@ namespace WebCalendar.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            IQueryable<Meeting> meetings = meetingRepository.All(User.Identity.Name);
             Contact contact = repository.Get(id);
-            bool isContactInMeeting = false;
-            foreach (var item in meetings)
-            {
-                foreach (var a in item.Contacts)
-                {
-                    if (a.ContactID == contact.ContactID)
-                    {
-                        isContactInMeeting = true;
-                        break;
-                    }
-                }
-            }
 
-            if (!isContactInMeeting)
+            if (!contact.Meetings.Any())
             {
                 repository.Delete(contact);
                 repository.Save();

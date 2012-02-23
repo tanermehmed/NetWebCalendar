@@ -3,13 +3,12 @@
 
 @{
     ViewBag.Title = "Index";
+    ViewBag.CurrentPage = "Meeting";
 }
 
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
-    @Html.ActionLink("Show Today's Meetings", "Index")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "link" })
+    @Html.ActionLink("Show Today's Meetings", "Index", null, new { @class = "link" })
 </p>
 @{
     var grid = new WebGrid(source: Model, ajaxUpdateContainerId: "grid",
@@ -42,40 +41,31 @@
 
 @using (Html.BeginForm())
 {
-        <div class="editor-label">
-            Start Date:
-        </div>
+     <div class="field">
         <div class="editor-field">
-           <input type="text" id="startDate" name="startDate" />
+           <input class="datepicker login-text" placeholder="Start date" type="text" id="startDate" name="startDate" />
         </div>
-        <div class="editor-label">
-            End Date:
-        </div>
+    </div>
+    <div class="field">
         <div class="editor-field">
-           <input type="endDate" id="endDate" name="endDate" />
+           <input class="datepicker login-text" placeholder="End date" type="endDate" id="endDate" name="endDate" />
         </div>
-        <div class="editor-label">
-            Category:
-        </div>
+    </div>
+    <div class="field">
         <div class="editor-field">
-            @Html.DropDownList("categoryName", String.Empty)
+           <input class="login-text" placeholder="Contact first name"type="text" id="firstName" name="firstName" />
         </div>
-        <div class="editor-label">
-            Contact First Name:
-        </div>
+    </div>
+    <div class="field">
         <div class="editor-field">
-           <input type="text" id="firstName" name="firstName" />
+           <input class="login-text" placeholder="Contact last name" type="text" id="lastName" name="lastName" />
         </div>
-        <div class="editor-label">
-            Contact Last Name:
-        </div>
-        <div class="editor-field">
-           <input type="text" id="lastName" name="lastName" />
-        </div>
-
-        <p>
-            <input type="submit" value="Search" />
-        </p>
+    </div>
+    <div class="field">
+        @Html.DropDownList("categoryName", String.Empty)
+    </div>
+    
+    <input type="submit" value="Search" />
 }
 <div id="grid">
   @grid.GetHtml(
@@ -90,9 +80,8 @@
           grid.Column(header: "Contacts", format: (item) => GetContacts(item.MeetingID)),
           grid.Column(header: "Action", format: (item) =>
               new HtmlString(
-                     Html.ActionLink("Edit", "Edit", new { id = item.MeetingID }).ToString() +
-                           Html.ActionLink("Details", "Details", new { id = item.MeetingID }).ToString() +
-                           Html.ActionLink("Delete", "Delete", new { id = item.MeetingID }).ToString()
+                     Html.ActionLink("Edit", "Edit", null, new { id = item.MeetingID }, new { @class = "link" }).ToString() +
+                           Html.ActionLink("Delete", "Delete", null, new { id = item.MeetingID }, new { @class = "link" }).ToString()
               )
             )
         )

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    ViewBag.CurrentPage = "Contact";
 }
 
 <h2>Edit</h2>
@@ -12,8 +13,6 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Contact</legend>
 
         @Html.HiddenFor(model => model.ContactID)
 
@@ -21,7 +20,7 @@
             @Html.LabelFor(model => model.FirstName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName)
+            @Html.TextBoxFor(model => model.FirstName, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.FirstName)
         </div>
 
@@ -29,7 +28,7 @@
             @Html.LabelFor(model => model.LastName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
+            @Html.TextBoxFor(model => model.LastName, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.LastName)
         </div>
 
@@ -37,7 +36,7 @@
             @Html.LabelFor(model => model.Email)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Email)
+            @Html.TextBoxFor(model => model.Email, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.Email)
         </div>
 
@@ -45,7 +44,7 @@
             @Html.LabelFor(model => model.DateOfBirth)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.DateOfBirth)
+            @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.DateOfBirth)
         </div>
 
@@ -53,7 +52,7 @@
             @Html.LabelFor(model => model.Phone)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Phone)
+            @Html.TextBoxFor(model => model.Phone, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.Phone)
         </div>
 
@@ -61,7 +60,7 @@
             @Html.LabelFor(model => model.Address)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Address)
+            @Html.TextBoxFor(model => model.Address, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.Address)
         </div>
 
@@ -69,16 +68,12 @@
             @Html.LabelFor(model => model.Comment)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Comment)
+            @Html.TextBoxFor(model => model.Comment, new { @class = "login-text" })
             @Html.ValidationMessageFor(model => model.Comment)
         </div>
 
         <p>
             <input type="submit" value="Save" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
         </p>
-    </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

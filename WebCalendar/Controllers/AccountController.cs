@@ -71,7 +71,7 @@ namespace WebCalendar.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Meeting");
                     }
                 }
                 else

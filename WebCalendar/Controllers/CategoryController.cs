@@ -36,16 +36,6 @@ namespace WebCalendar.Controllers
         }
 
         //
-        // GET: /Categories/Details/5
-
-        public ViewResult Details(int id)
-        {
-            Category category = repository.Get(id);
-            CategoryViewModel categoryModel = new CategoryViewModel(category);
-            return View(categoryModel);
-        }
-
-        //
         // GET: /Categories/Create
 
         public ActionResult Create()

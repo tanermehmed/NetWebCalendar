@@ -37,3 +37,16 @@ C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 4\ASP.NET MVC FINAL PROJECT 3\A
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 4\ASP.NET MVC FINAL PROJECT 3\ASP.NET MVC FINAL PROJECT 1\WebCalendar\WebCalendar.Tests\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 4\ASP.NET MVC FINAL PROJECT 3\ASP.NET MVC FINAL PROJECT 1\WebCalendar\WebCalendar.Tests\obj\Debug\WebCalendar.Tests.dll
 C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 4\ASP.NET MVC FINAL PROJECT 3\ASP.NET MVC FINAL PROJECT 1\WebCalendar\WebCalendar.Tests\obj\Debug\WebCalendar.Tests.pdb
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.Tests.dll.config
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.Tests.dll
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.Tests.pdb
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.dll
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.DAL.dll
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\Ninject.dll
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.pdb
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\WebCalendar.DAL.pdb
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\Ninject.pdb
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\bin\Debug\Ninject.xml
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\obj\Debug\WebCalendar.Tests.dll
+C:\Users\Taner\Desktop\ASP.NET MVC FINAL PROJECT 5\WebCalendar\WebCalendar.Tests\obj\Debug\WebCalendar.Tests.pdb

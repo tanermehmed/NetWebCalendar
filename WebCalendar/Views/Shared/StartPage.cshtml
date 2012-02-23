@@ -13,23 +13,19 @@
     </head>
     <body>
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("Web Calendar", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LogOnPartial")
-                    </section>
-                </div>
+            <div id="title">
+                 @Html.ActionLink("Web Calendar", "Index", "Home")
+            </div>
+            <div id="login">
+                 @Html.Partial("_LogOnPartial")
             </div>
         </header>
-        <div id="body">
-            @RenderSection("featured", false)
-            <section class="content-wrapper main-content clear-fix">
+        <section id="outer">
+
+            <section id="navbar" class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
-        </div>
+        </section>
         	<footer>
 				<ul>
 					<li><a href="#">About</a></li>

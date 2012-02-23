@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    ViewBag.CurrentPage = "Category";
 }
 
 <h2>Edit</h2>
@@ -12,8 +13,6 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Category</legend>
 
         @Html.HiddenFor(model => model.CategoryID)
 
@@ -27,10 +26,6 @@
 
         <p>
             <input type="submit" value="Save" />
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "link" })
         </p>
-    </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

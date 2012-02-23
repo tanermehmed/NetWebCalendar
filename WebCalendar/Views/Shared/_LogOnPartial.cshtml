@@ -4,9 +4,5 @@
         @Html.ActionLink("Log Off", "LogOff", "Account")
     </p>
 } else {
-    @*<ul>
-        <li>@Html.ActionLink("Register", "Register", "Account")</li>
-        <li>@Html.ActionLink("Log on", "LogOn", "Account")</li>
-    </ul>*@
     @Html.Action("LogOn", "Account")
 }

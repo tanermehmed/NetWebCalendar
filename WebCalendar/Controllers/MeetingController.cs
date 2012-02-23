@@ -69,6 +69,7 @@ namespace WebCalendar.Controllers
             }
 
             ViewBag.categoryName = new SelectList(categoryRepository.All(User.Identity.Name), "Name", "Name");
+
             return View(meetingsModel);
         }
 
@@ -88,6 +89,7 @@ namespace WebCalendar.Controllers
             }
 
             ViewBag.categoryName = new SelectList(categoryRepository.All(User.Identity.Name), "Name", "Name");
+
             return View(meetingsModel);
         }
 
@@ -111,24 +113,8 @@ namespace WebCalendar.Controllers
             }
 
             ViewBag.categoryName = new SelectList(categoryRepository.All(User.Identity.Name), "Name", "Name");
+
             return View(meetingsModel);
-        }
-
-        //
-        // GET: /Meeting/Details/5
-
-        public ViewResult Details(int id)
-        {
-            Meeting meeting = meetingRepository.Get(id);
-            MeetingViewModel meetingModel = new MeetingViewModel(meeting);
-            IQueryable<Contact> contacts = contactRepository.All(User.Identity.Name);
-            List<ContactViewModel> contactsModel = new List<ContactViewModel>();
-            foreach (var item in contacts)
-            {
-                contactsModel.Add(new ContactViewModel(item));
-            }
-
-            return View(meetingModel);
         }
 
         //
@@ -150,6 +136,7 @@ namespace WebCalendar.Controllers
                 categories.Add(new CategoryViewModel(item));
             }
             ViewBag.CategoryID = new SelectList(categories, "CategoryID", "Name");
+
             return View(new MeetingViewModel(contactsModel));
         }
 
@@ -167,26 +154,10 @@ namespace WebCalendar.Controllers
                 meetingModel.Place = form["Place"];
 
                 string category = form["CategoryID"];
-                IQueryable<Category> cat = categoryRepository.All(User.Identity.Name);
-                foreach (var item in cat)
-                {
-                    if (item.CategoryID == int.Parse(category))
-                    {
-                        meetingModel.Category = new CategoryViewModel(item);
-                        break;
-                    }
-                }
+                GetActiveCategory(meetingModel, category);
 
                 string[] checkedValues = form.GetValues("assignChkBx");
-                int[] contactIds = null;
-                if (checkedValues != null)
-                {
-                    contactIds = new int[checkedValues.Length];
-                    for (int i = 0; i < checkedValues.Length; i++)
-                    {
-                        contactIds[i] = int.Parse(checkedValues[i]);
-                    }
-                }
+                List<int> contactIds = GetActiveContacts(checkedValues);
 
                 Meeting meeting = meetingModel.ToMeeting();
                 meetingRepository.InsertOrUpdate(meeting, contactIds, User.Identity.Name);
@@ -195,6 +166,33 @@ namespace WebCalendar.Controllers
             }
 
             return View(meetingModel);
+        }
+
+        private void GetActiveCategory(MeetingViewModel meetingModel, string category)
+        {
+            IQueryable<Category> cat = categoryRepository.All(User.Identity.Name);
+            foreach (var item in cat)
+            {
+                if (item.Name == category)
+                {
+                    meetingModel.Category = new CategoryViewModel(item);
+                    break;
+                }
+            }
+        }
+
+        private static List<int> GetActiveContacts(string[] checkedValues)
+        {
+            List<int> contactIds = new List<int>();
+            if (checkedValues != null)
+            {
+                for (int i = 0; i < checkedValues.Length; i++)
+                {
+                    contactIds.Add(int.Parse(checkedValues[i]));
+                }
+            }
+
+            return contactIds;
         }
 
         //
@@ -220,7 +218,8 @@ namespace WebCalendar.Controllers
             }
 
             ViewBag.Contacts = contacts;
-            ViewBag.CategoryID = new SelectList(categories, "Name", "Name", meeting.Category.Name);
+            ViewBag.CategoryID = new SelectList(categories, "Name", "Name", 
+                                                meeting.Category != null ? meeting.Category.Name : string.Empty);
             return View(meetingModel);
         }
 
@@ -239,32 +238,18 @@ namespace WebCalendar.Controllers
                 meetingModel.Place = form["Place"];
 
                 string category = form["CategoryID"];
-                IQueryable<Category> cat = categoryRepository.All(User.Identity.Name);
-                foreach (var item in cat)
-                {
-                    if (item.Name == category)
-                    {
-                        meetingModel.Category = new CategoryViewModel(item);
-                        break;
-                    }
-                }
+                GetActiveCategory(meetingModel, category);
 
                 string[] checkedValues = form.GetValues("assignChkBx");
-                int[] contactIds = null;
-                if (checkedValues != null)
-                {
-                    contactIds = new int[checkedValues.Length];
-                    for (int i = 0; i < checkedValues.Length; i++)
-                    {
-                        contactIds[i] = int.Parse(checkedValues[i]);
-                    }
-                }
+                List<int> contactIds = GetActiveContacts(checkedValues);
 
                 Meeting meeting = meetingModel.ToMeeting();
                 meetingRepository.InsertOrUpdate(meeting, contactIds, User.Identity.Name);
                 meetingRepository.Save();
+
                 return RedirectToAction("Index");
             }
+
             return View(meetingModel);
         }
 
@@ -288,6 +273,7 @@ namespace WebCalendar.Controllers
             Meeting meeting = meetingRepository.Get(id);
             meetingRepository.Delete(meeting);
             meetingRepository.Save();
+
             return RedirectToAction("AllMeetings");
         }
     }
